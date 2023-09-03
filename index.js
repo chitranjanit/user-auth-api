@@ -4,13 +4,13 @@ const app = express();
 
 const secretKey = 'secretKey';
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.json({
     message: 'a simple apis',
   });
 });
 
-app.post('/login', (req, res) => {
+app.post('/api/login', (req, res) => {
   const user = {
     id: 1,
     username: 'anil',
@@ -24,7 +24,7 @@ app.post('/login', (req, res) => {
   });
 });
 
-app.post('/profile', verifyToken, (req, res) => {
+app.post('/api/profile', verifyToken, (req, res) => {
   jwt.verify(req.token, secretKey, (err, authData) => {
     if (err) {
       res.json(err);
